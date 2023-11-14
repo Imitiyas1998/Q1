@@ -1,0 +1,236 @@
+<employeeInfo>
+<employee category="Sales">
+<employeeID>01</employeeID>
+<name>Walter</name>
+<age>35</age>
+<city state="California">Los Angeles</city>
+<salary>5450</salary>
+</employee>
+
+<employee category="Research and Development">
+<employeeID>02</employeeID>
+<name>Wick</name>
+<age>32</age>
+<city state="Texas">Austin</city>
+<salary>9825</salary>
+</employee>
+
+<employee category="Production and Supply">
+<employeeID>03</employeeID>
+<name>Jhon</name>
+<age>33</age>
+<city state="Florida">Miami</city>
+<salary>7800</salary>
+</employee>
+
+<employee category="Financial">
+<employeeID>04</employeeID>
+<name>Liam</name>
+<age>30</age>
+<city state="Alaska">Nome</city>
+<salary>10 825</salary>
+</employee>
+
+<employee category="Human Resource">
+<employeeID>05</employeeID>
+<name>William</name>
+<age>38</age>
+<city state="Georgia">Columbus</city>
+<salary>10 100</salary>
+</employee>
+</employeeInfo>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <table border="1">
+
+        <tr>
+            <th>Employee Id</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>City/State</th>
+            <th>Basic Salary</th>
+        </tr>
+
+        <tr>
+            <td id="data1"></td>
+            <td id="data2"></td>
+            <td id="data3"></td>
+            <td id="data4"></td>
+            <td id="data5"></td>
+        </tr>
+        <tr>
+            <td id="data6"></td>
+            <td id="data7"></td>
+            <td id="data8"></td>
+            <td id="data9"></td>
+            <td id="data10"></td>
+        </tr>
+        <tr>
+            <td id="data11"></td>
+            <td id="data12"></td>
+            <td id="data13"></td>
+            <td id="data14"></td>
+            <td id="data15"></td>
+        </tr>
+
+        <tr>
+            <td id="data16"></td>
+            <td id="data17"></td>
+            <td id="data18"></td>
+            <td id="data19"></td>
+            <td id="data20"></td>
+        </tr>
+
+        <tr>
+            <td id="data21"></td>
+            <td id="data22"></td>
+            <td id="data23"></td>
+            <td id="data24"></td>
+            <td id="data25"></td>
+        </tr>
+    </table>
+
+    <script>
+        var xhttp = new XMLHttpRequest;
+        xhttp.open("GET", "data.xml", true); 
+        xhttp.send();
+        xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) { 
+            var xmlDoc = xhttp.responseXML;
+
+
+            document.getElementById("data1").innerHTML = xmlDoc.getElementsByTagName("EmployeeId")[0].childNodes[0].nodeValue;
+            document.getElementById("data2").innerHTML = xmlDoc.getElementsByTagName("Name")[0].childNodes[0].nodeValue;
+            document.getElementById("data3").innerHTML = xmlDoc.getElementsByTagName("Employee")[0].attributes[0].nodeValue;
+            document.getElementById("data4").innerHTML = xmlDoc.getElementsByTagName("City")[0].childNodes[0].nodeValue +", " +xmlDoc.getElementsByTagName("City")[0].attributes[0].nodeValue 
+            document.getElementById("data5").innerHTML = xmlDoc.getElementsByTagName("Basic_Salary")[0].childNodes[0].nodeValue;
+
+            // document.getElementById("data6").innerHTML = xmlDoc.getElementsByTagName("EmployeeId")[1].childNodes[0].nodeValue;
+            document.getElementById("data7").innerHTML = xmlDoc.getElementsByTagName("Name")[1].childNodes[0].nodeValue;
+            //document.getElementById("data8").innerHTML = xmlDoc.getElementsByTagName("Employee")[1].attributes[0].nodeValue;
+            document.getElementById("data9").innerHTML = xmlDoc.getElementsByTagName("City")[1].childNodes[0].nodeValue +", " +xmlDoc.getElementsByTagName("City")[1].attributes[0].nodeValue 
+            //document.getElementById("data10").innerHTML = xmlDoc.getElementsByTagName("Basic_Salary")[1].childNodes[0].nodeValue;
+
+            document.getElementById("data11").innerHTML = xmlDoc.getElementsByTagName("EmployeeId")[2].childNodes[0].nodeValue;
+            document.getElementById("data12").innerHTML = xmlDoc.getElementsByTagName("Name")[2].childNodes[0].nodeValue;
+            document.getElementById("data13").innerHTML = xmlDoc.getElementsByTagName("Employee")[2].attributes[0].nodeValue;
+            document.getElementById("data14").innerHTML = xmlDoc.getElementsByTagName("City")[2].childNodes[0].nodeValue +", " +xmlDoc.getElementsByTagName("City")[2].attributes[0].nodeValue 
+            document.getElementById("data15").innerHTML = xmlDoc.getElementsByTagName("Basic_Salary")[2].childNodes[0].nodeValue;
+
+            document.getElementById("data16").innerHTML = xmlDoc.getElementsByTagName("EmployeeId")[3].childNodes[0].nodeValue;
+            document.getElementById("data17").innerHTML = xmlDoc.getElementsByTagName("Name")[3].childNodes[0].nodeValue;
+            document.getElementById("data18").innerHTML = xmlDoc.getElementsByTagName("Employee")[3].attributes[0].nodeValue;
+            //document.getElementById("data19").innerHTML = xmlDoc.getElementsByTagName("City")[3].childNodes[0].nodeValue +", " +xmlDoc.getElementsByTagName("City")[3].attributes[0].nodeValue 
+            document.getElementById("data20").innerHTML = xmlDoc.getElementsByTagName("Basic_Salary")[3].childNodes[0].nodeValue;
+
+            document.getElementById("data21").innerHTML = xmlDoc.getElementsByTagName("EmployeeId")[4].childNodes[0].nodeValue;
+            document.getElementById("data22").innerHTML = xmlDoc.getElementsByTagName("Name")[4].childNodes[0].nodeValue;
+            document.getElementById("data23").innerHTML = xmlDoc.getElementsByTagName("Employee")[4].attributes[0].nodeValue;
+            document.getElementById("data24").innerHTML = xmlDoc.getElementsByTagName("City")[4].childNodes[0].nodeValue +", " +xmlDoc.getElementsByTagName("City")[4].attributes[0].nodeValue 
+            document.getElementById("data25").innerHTML = xmlDoc.getElementsByTagName("Basic_Salary")[4].childNodes[0].nodeValue;
+
+
+            //updating  c part ----data value
+            var x = xmlDoc.getElementsByTagName("Basic_Salary")[1].childNodes[0];
+            x.nodeValue="$10000";
+
+            document.getElementById("data10").innerHTML = x.nodeValue;
+
+            //updating a, b ---attribute
+
+            var y = xmlDoc.getElementsByTagName("City")[3].childNodes[0]; 
+            y.nodeValue = "Jersey City";
+
+            var z = xmlDoc.getElementsByTagName("City")[3]; 
+            var attrib_value = z.getAttributeNode("State"); 
+            var attrib_value = "New Jersey"
+            document.getElementById("data19").innerHTML = y.nodeValue+ "/"+ attrib_value;
+
+            //delete elemnt
+
+            var del = xmlDoc.getElementsByTagName("EmployeeId")[1];
+            var del_new = del.childNodes[0];
+
+            document.getElementById("data6").innerHTML = del.removeChild(del_new);
+
+
+            //delete attribute
+
+            var abc = xmlDoc.getElementsByTagName("Employee")[1];
+            var xyz = abc.getAttributeNode("Category")[1];
+
+            document.getElementById("data8").innerHTML = abc.removeAttribute(xyz);
+        }
+        };
+    </script>
+    
+</body>
+</html>
+
+
+{
+  "employeeInfo": {
+    "employee": [
+      {
+        "category": "Sales",
+        "employeeID": "01",
+        "name": "Walter",
+        "age": 35,
+        "city": {
+          "name": "Los Angeles",
+          "state": "California"
+        },
+        "salary": 5450
+      },
+      {
+        "category": "Research and Development",
+        "employeeID": "02",
+        "name": "Wick",
+        "age": 32,
+        "city": {
+          "name": "Austin",
+          "state": "Texas"
+        },
+        "salary": 9825
+      },
+      {
+        "category": "Production and Supply",
+        "employeeID": "03",
+        "name": "Jhon",
+        "age": 33,
+        "city": {
+          "name": "Miami",
+          "state": "Florida"
+        },
+        "salary": 7800
+      },
+      {
+        "category": "Financial",
+        "employeeID": "04",
+        "name": "Liam",
+        "age": 30,
+        "city": {
+          "name": "Nome",
+          "state": "Alaska"
+        },
+        "salary": 10825
+      },
+      {
+        "category": "Human Resource",
+        "employeeID": "05",
+        "name": "William",
+        "age": 38,
+        "city": {
+          "name": "Columbus",
+          "state": "Georgia"
+        },
+        "salary": 10100
+      }
+    ]
+  }
+}
